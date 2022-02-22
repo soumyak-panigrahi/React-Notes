@@ -6,6 +6,8 @@ Setup For TailwindCSS with any Famework can be found [HERE](https://tailwindcss.
 
 ## TailWindCSS External Resources
 
+[daisUI](https://daisyui.com/)
+
 [mambaui](https://mambaui.com/components/hero)
 
 [kitwind](https://kitwind.io/products/kometa/components)

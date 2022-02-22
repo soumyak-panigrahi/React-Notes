@@ -1,9 +1,9 @@
 # Components
 
-In React JSX is used which is a hybrid of HTML and JS. 
+In React, JSX is used which is a hybrid of HTML and JS.
 
 React uses something called Component which are building block for a bigger application. Simply Components are
-JS Object within which there may be pure JS , pure HTML or JSX code prsent but React will compile as per need.
+JS Object within which there may be pure JS , pure HTML or JSX code present but React will compile it as per need.
 
 There are two ways to make a component more on [HERE](https://reactjs.org/docs/components-and-props.html#function-and-class-components)
 
@@ -19,14 +19,14 @@ For Naming Convention, the component name should be presented in Pascal's Case, 
 words and each word first letter is capital. eg. i_am_going_home is written using undersore the same in pascal case
 is IAmGoingHome.
 
-Pascal's Case is used as the Components are used as HTML tag in JSX code. So, as to differentiate between normal
+Pascal's Case is used, as the Components are used as HTML tag in JSX code. So, as to differentiate between normal
 HTML tag and JSX rendering Component tags.
 
 It always return a JSX code and always returned JSX code should only have one root element.
 
-``````
+```
 function ThisIsAComponent { // Pascal Case NamingConvention
-    // You can Use Normal JS Code 
+    // You can Use Normal JS Code
 
     return ( // JSX Code
         <div> // Only one root element
@@ -43,16 +43,15 @@ function ThisIsAnotherComponent {
     );
     return someJSXCode;
 }
-``````
+```
 
 Simply put JSX code are converted into Js Objects, so that why they can be stored in variables;
-
 
 ### Using Components in JSX code
 
 Once you defined a Component, you can use it like a HTML tag.
 
-```````
+```
 function HeadingAndParagraph {
     return (
         <div>
@@ -72,7 +71,7 @@ function ManyHeadingAndParagraph {
         <HeadingAndParagraph></HeadingAndParagraph>
     );
 }
-```````
+```
 
 Once you define a Component it can be used just like a HTML tag.
 
@@ -80,7 +79,7 @@ Once you define a Component it can be used just like a HTML tag.
 
 As already defined JSX is mixture of HTML and Js Codes. React can easily identify Pure Js Code.
 
-`````
+```
 function SomeComponent {
     // You can Use normal Js code anywhere except within JSX code
 
@@ -90,7 +89,7 @@ function SomeComponent {
         <div>
             <ComponentA></ComponentA>
 
-            const obj = { // This is will not create a object with JSX Code 
+            const obj = { // This is will not create a object with JSX Code
                 name : "Me",
                 getname: () => this.name,
             }
@@ -101,14 +100,14 @@ function SomeComponent {
 
     return someJSXCode;
 }
-`````
+```
 
 Simply put you cannot use JS code within JSX code. But you can embed Js Expression, which will be evaluated and value is
 substitued instead.
 
 `Syntax: { expression } , will evaluted the expression and the value is substituted`
 
-````
+```
 function SomeComponent() {
 
     const heading = "This is a heading";
@@ -120,23 +119,25 @@ function SomeComponent() {
     return (
         <div>
             <h1>{heading}</h1> // {heading} is replaced by This is a heading
-            {someJSXCode} // this is replaced by <p>This is a Paragraph</p>
+            {someJSXCode} // {someJSXCode} is replaced by <p>This is a Paragraph</p>
         </div>
     )
 }
-````
+```
 
-So, you can `{ }` to evalute any Js expression.
+So, you can use `{ }` to evalute any Js expression.
 
-**Note** that object cannot be evaluted as expression. As we already pointed out you can store JSX code as variable because they 
-are converted into object but they can evaluted as expression because in regards to JS, they are expression.
+**Note** that object cannot always be evaluted as expression.
 
-Also Note that `{ }` can evaluted some object like JSX code and Iterable objects but not all.
+As we already pointed out you can store JSX code as variable because they are converted into object but they can evaluted as
+expression because in regards to JS, they are expression.
+
+Also Note that `{ }` can evaluted some object like JSX code and Iterable objects but not all, more on this later.
 
 #### Commenting on JSX Code
 
 As JSX code is neither JS or HTML, commenting is not available. But you can comment using
-the above. So, where ever you want to comment write as you write in JS and they simply wrap it 
+the above. So, where ever you want to comment write as you write in JS and they simply wrap it
 around `{ }`.
 
 ```
@@ -149,7 +150,7 @@ As pointed out each Component should be placed in it's own file and the filename
 
 > Code in ModularComponent.js
 
-````
+```
 function ModularComponent() {
     const someJSXCode = (
         {//Your code Here}
@@ -158,7 +159,7 @@ function ModularComponent() {
 }
 
 export default ModularComponent;
-````
+```
 
 Note more on [export](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export#syntax)
 
@@ -166,24 +167,23 @@ If you have more than one Component, then you have to export all of them to be u
 
 To use it in another file
 
-````
+```
 import ModularComponet from './filePath/ModularPath'
-````
-**Note** `./` will start the path from where the present file is located and `../` will start from the parent directory.
+```
 
-## Styling with CSS 
+**Note** `/` will start from root, `./` will start the path from where the present file is located and `../` will start from the parent directory.
+
+## Styling with CSS
 
 As we do all the work with JSX, so adding CSS is little different from that of a adding it to HTML.
 
-It is often recommended that you should style each component separated with their own file attacheed.
+It is often recommended that you should style each component separated with their own file attached.
 
 First you have to import the css file.
 
-``
-Use: import "/filePath/fileName.css" , always add the extension
-``
+Use: `import "/filePath/fileName.css"` , always add the extension
 
-then you can do what you usually do as in a html file. 
+then you can do what you usually do as in a html file.
 
 For other CSS Framework, refer to their official docs. Doing as we did for normal Html file may not
 work always.
