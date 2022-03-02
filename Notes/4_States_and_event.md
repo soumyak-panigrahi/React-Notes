@@ -108,6 +108,38 @@ In other words, in `setData` always supply it with a callback function whose fir
 use it rather than the stored varible for `data` as it may not always has the previous state value, then return
 `next state value` from the callback function.
 
+### Flow of Change of State
+
+As already noted, each time a state of a component changes the whole component is rerendered. So, some of the common
+bug which will rise through this is a `Infinite loop`. Let us consider the below example.
+
+```
+function SomeComp() {
+
+    const [state , setState] = useState();
+    setState(val);
+    return (
+        <div>
+            {state}
+        </div>
+    )
+}
+```
+
+The Above will create a Infinite loop. So, the flow of state is
+
+```
+(State Initialized) -> (Component Rendered Using Intial values) ----------
+                                                                         |
+(State Changed) -> (Component rerendered using the Current values) ------|
+        ^                                                                | Some External Factor
+        |                                                                | Like events, API call , http request etc.
+        ------------------------------------------------------------------
+```
+
+So, in other words states should only changes based on some external factor, rather than than some internal factor,
+for internal fctor use global variable.
+
 ## Events
 
 More on Different Events in [JS](https://developer.mozilla.org/en-US/docs/Web/API/Event) and Synthetic Event in [React](https://reactjs.org/docs/events.html).
