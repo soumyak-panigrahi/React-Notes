@@ -165,7 +165,7 @@ just UI rendering.
 - Post Processing of some Component.
 
 It can act as Post Processing Function as it is always execueted once the component is rendered or also by for separating
-logic based o combination of differents. For example, in above eample we can validate the permission access in `event handler`
+logic based on combination of different states. For example, in above eample we can validate the permission access in `event handler`
 after we retrive the data, but this first of all keep the code `dry` as we have validate in each for `userName` and `password`
 handler. And mostly Event Handler are only concerned for one state change (not always the case but recommanded), so that
 collection of states can be handled by using `useEffect` as shown above.
@@ -191,3 +191,9 @@ function SomeComp() {
     }, [userName , password]);
 }
 ```
+
+So, the code work as, on each onChange event userName and Password is changed. So, each time useEffect will be called
+now we are setting a time out of `1 sec`. Now, suppose the user changes the states within this `time lag`, then useEffect
+will be triggered, but before the `callbackFn` is called, the `CleanUp` is triggered and it clear the timeout by using
+`clearTimeout`, so validating is untriggered. but now when the `callbackfn` is called it will set a new time out. And the
+above cycle continous, until the user gives a `time lag` of ` 1 sec`.
