@@ -185,7 +185,7 @@ function SomeComp() {
             if(validate(userName , password))
             setAccessPermission(true);
         } , 1000);
-        return function cleanUp() {
+        return function CleanUp() {
             clearTimeout(ID);
         }
     }, [userName , password]);
@@ -195,5 +195,7 @@ function SomeComp() {
 So, the code work as, on each onChange event userName and Password is changed. So, each time useEffect will be called
 now we are setting a time out of `1 sec`. Now, suppose the user changes the states within this `time lag`, then useEffect
 will be triggered, but before the `callbackFn` is called, the `CleanUp` is triggered and it clear the timeout by using
-`clearTimeout`, so validating is untriggered. but now when the `callbackfn` is called it will set a new time out. And the
+`clearTimeout`, so validating is untriggered. but now when the `callbackfn` is called it will set a new `time out`. And the
 above cycle continous, until the user gives a `time lag` of ` 1 sec`.
+
+Note: if your wondering how ID can be used in the `CleanUp` function, read about [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures).
