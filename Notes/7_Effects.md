@@ -165,10 +165,7 @@ just UI rendering.
 - Post Processing of some Component.
 
 It can act as Post Processing Function as it is always execueted once the component is rendered or also by for separating
-logic based on combination of different states. For example, in above eample we can validate the permission access in `event handler`
-after we retrive the data, but this first of all keep the code `dry` as we have validate in each for `userName` and `password`
-handler. And mostly Event Handler are only concerned for one state change (not always the case but recommanded), so that
-collection of states can be handled by using `useEffect` as shown above.
+logic based on combination of different states. For example, in above eample we can validate the permission access in `event handler` after we retrive the data, but this first of all keep the code `dry` as we have validate in each for `userName` and `password` handler. And mostly Event Handler are only concerned for one state change (not always the case but recommanded), so that collection of states can be handled by using `useEffect` as shown above.
 
 ### CleanUp function
 

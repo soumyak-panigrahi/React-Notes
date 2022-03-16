@@ -4,7 +4,7 @@ So, we have already discussed about [States](./4_States_and_event.md#state), but
 
 ## useReducer
 
-So, think of it as extension of useState but flow of it bit different, recall [setState or setDta](./4_States_and_event.md#setdata) this works in two ways either call it with the `data or next state` or provide a callbackFn which returns the
+So, think of it as extension of useState but flow of it bit different, recall [setState or setData](./4_States_and_event.md#setdata) this works in two ways either call it with the `data or next state` or provide a callbackFn which returns the
 `next state`, the second approach is more recommanded as it will take care of asynchrous behaviour of `previous state` by
 providing the first parameter of the callbackFn by `Previous State`.
 
@@ -107,7 +107,7 @@ In any context, a `Provider` is a Component which supply the `context` for a env
 
 To Use Provider, first make `ContextComponent` by using `createContext`. Then use the member `Provider`
 
-```js
+```jsx
 <ContextComponent.Provider value={context}>
   // JSX Code Here
 </ContextComponent.Provider>
@@ -120,8 +120,8 @@ So, all children and their successor will get context of this given Provider. No
 
 Some points, as how to make a Context Provider a Independent unit. So, First make sure to divide your context data as
 which are static and dynamic, static value can be hard coded whereas for Dynamic data make sure to make state for either
-by using `useState` or `useReducer` (depending on the complexity). Other than that make to supply different setters as
-to change state of States, setters are important don't directly supply the setter itself but some self-contained fumction
+by using `useState` or `useReducer` (depending on the complexity). Other than that make sure to supply different setters as
+to change state of States, setters are important don't directly supply the setter itself but some self-contained function
 which will be used in specific usecase.
 
 - Static is eaily manage, so just hard code them.
@@ -132,7 +132,7 @@ Make to sure to use different `Context` by using `createContext`, for independen
 
 For Example, We are making a context for Autheticating
 
-```js
+```jsx
 import React, { useState } from "react";
 
 const AuthContext = React.createContext({
@@ -192,7 +192,7 @@ So, there are two ways to access the context, First by using the member `Consume
 
 #### Consumer Member
 
-To use it by this method first go where you want to consume the context. and Wrap arund then with the `Consumer` of the
+To use it by this method first go where you want to consume the context. and Wrap around then with the `Consumer` of the
 `Context Component`. Then call a callbackFn has the first parameter is provided with the context.
 
 ```jsx
@@ -209,7 +209,7 @@ function SomeConsumerComponent(props) {
 }
 ```
 
-This may lead to bloaed code, it is most recommanded to use `useContext` instead.
+This may lead to bloated code, it is not recommanded to use.
 
 #### useContext
 

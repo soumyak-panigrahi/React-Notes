@@ -142,3 +142,5 @@ After making the reference or ref, set the ref attribute of the HTML Tag to whic
 `current` property to access the DOM of it.
 
 [Use Case Found Here](https://reactjs.org/docs/refs-and-the-dom.html#when-to-use-refs)
+
+## Forwarding ref
