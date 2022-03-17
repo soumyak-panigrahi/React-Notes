@@ -144,3 +144,51 @@ After making the reference or ref, set the ref attribute of the HTML Tag to whic
 [Use Case Found Here](https://reactjs.org/docs/refs-and-the-dom.html#when-to-use-refs)
 
 ## Forwarding ref
+
+As `ref` only works for bulitin html tags, adding for some Custom Components will do nothing but it can be forwarded
+to some `html element`. It is can be done by
+
+First create a ref as shown above then set the ref of the custom elements.
+
+```jsx
+const ref = useRef();
+
+<SomeComponent ref={ref} />;
+```
+
+Then the Component for which it has to forwared use `forwardRef` defined in `React` to wrap to get a new component
+and in this the second argument will be the ref which is set in parent component.
+
+```jsx
+const SomeComponet = React.forwardRef(function (props, ref) {
+  // Use ref to set any html tag
+});
+```
+
+### useImperativeHandle
+
+Sometime a Custom component can be a coercive `html tags`, so setting a single element may not be beneficial.
+Therefore, we use `useImperativeHandle` to define our own method for the referenced component.
+
+use as shown below
+
+```jsx
+const SomeComponet = React.forwardRef(function (props, ref) {
+  useImperativeHandle(
+    ref,
+    () => ({
+      key1: value,
+      key2: value,
+    }),
+    [dep1, dep2]
+  );
+});
+```
+
+So,
+
+- first argument takes the forwared ref.
+- Will take a callback Fn which will return a Object which the can refere by `current.key`
+- Will take any Dependencies.
+
+More about it in [official docs](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)
