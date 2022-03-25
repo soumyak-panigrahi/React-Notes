@@ -1,5 +1,9 @@
 # Third-Party Libraries used in React
 
+## For Data-fetching
+
+- [React-Query](https://react-query.tanstack.com/)
+
 ## For Styling
 
 - [Styled-Components](https://styled-components.com/)
