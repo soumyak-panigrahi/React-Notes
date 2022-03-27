@@ -13,11 +13,13 @@ $ npm install redux
 So, the flow Chart shown below
 
 ```mermaid
-flowchart LR
-    A[Reducer Function] ==>|State Changes| B[(Central state Store)]
-    B -->|Subscriber| C[Component]
+flowchart TD
+    B[(Central state Store)] --> E{{On State Change}}
+    E-->|Subscribers Are notified| C{Component}
+    C ---|Has to Subscribed|B
     C -->|Action| D[Dispatch]
     D --> |Action Forwarded To| A
+    A[Reducer Function] -.->|State Changes| B
 ```
 
 **Note** Action is simply a JavaScript Object, according to it's default specification it should have a `type` and `payload`
